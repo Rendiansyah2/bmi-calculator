@@ -372,6 +372,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <p style="font-size: 0.9em; opacity: 0.8; margin-bottom: 10px;">Dibuat oleh: <strong>Salma Kafa Rikha Lada</strong></p>
             <h1>🏥 Kalkulator Status Gizi</h1>
             <p>Hitung Indeks Massa Tubuh (IMT/BMI) untuk Usia Dewasa</p>
         </div>
@@ -489,6 +490,7 @@
 
         <div class="footer">
             <p>💚 Jaga kesehatan Anda dengan pola hidup sehat dan konsultasi rutin dengan tenaga kesehatan</p>
+            <p style="margin-top: 15px; font-size: 0.95em; opacity: 0.85;">Dikembangkan oleh: <strong>Salma Kafa Rikha Lada</strong></p>
         </div>
     </div>
 
