@@ -1,0 +1,12 @@
+node_modules
+/vendor/bin
+/vendor/symfony/console/Resources/completion
+tests
+*.md
+.git
+.github
+.gitignore
+.env
+.env.example
+docker-compose.yml
+Dockerfile

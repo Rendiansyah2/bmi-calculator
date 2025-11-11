@@ -1,0 +1,120 @@
+═══════════════════════════════════════════════════════════════════════
+  DEPLOY KE VERCEL - PANDUAN LENGKAP
+═══════════════════════════════════════════════════════════════════════
+
+✅ File konfigurasi Vercel sudah siap
+✅ Serverless function sudah dibuat
+✅ Tinggal deploy!
+
+───────────────────────────────────────────────────────────────────────
+STEP-BY-STEP DEPLOY KE VERCEL:
+───────────────────────────────────────────────────────────────────────
+
+📍 STEP 1: Buka Vercel
+   1. Buka: https://vercel.com
+   2. Login dengan GitHub account Anda
+   3. Klik "New Project" atau "Add New"
+
+📍 STEP 2: Import Repository
+   1. Cari repository: "bmi-calculator"
+   2. Klik "Import"
+   3. Vercel akan mendeteksi sebagai Laravel project
+
+📍 STEP 3: Configure Environment
+   1. Di halaman configure, isi Environment Variables:
+      ┌──────────────────────────────────┐
+      │ APP_NAME     = BMI Calculator    │
+      │ APP_ENV      = production        │
+      │ APP_DEBUG    = false             │
+      │ APP_URL      = (auto-generated)  │
+      └──────────────────────────────────┘
+
+   2. Klik "Deploy"
+
+📍 STEP 4: Tunggu Build Selesai
+   1. Vercel akan mulai build (bisa 3-5 menit)
+   2. Lihat log build di console
+   3. Tunggu sampai status "Ready" atau "✓ Deployed"
+
+───────────────────────────────────────────────────────────────────────
+FILE YANG SUDAH DISIAPKAN:
+───────────────────────────────────────────────────────────────────────
+
+✓ vercel.json
+  - Configure build command
+  - Output directory = public
+  - Framework = Laravel
+  - PHP 8.2 runtime
+
+✓ api/[...slug].php
+  - Serverless function untuk handle semua request
+  - Route ke Laravel public/index.php
+
+✓ .vercelignore
+  - File yang di-skip saat deploy
+
+───────────────────────────────────────────────────────────────────────
+JIKA TERJADI ERROR:
+───────────────────────────────────────────────────────────────────────
+
+❌ Error: "No Output Directory named 'dist'"
+   ✅ Sudah fixed dengan vercel.json (outputDirectory: "public")
+
+❌ Error: "npm ERR!"
+   ✅ Cek apakah package.json valid
+   ✅ Jalankan: npm install (local)
+
+❌ Error: "composer require error"
+   ✅ Cek composer.lock valid
+   ✅ Vercel auto-run composer install
+
+❌ Error: "404 Not Found"
+   ✅ Cek apakah routes/web.php ada
+   ✅ Cek public/index.php ada
+   ✅ Laravel routing mungkin tidak bekerja
+   ✅ Coba refresh atau clear cache
+
+───────────────────────────────────────────────────────────────────────
+VERCEL.JSON CONFIGURATION:
+───────────────────────────────────────────────────────────────────────
+
+Build Command:
+  composer install && npm install && npm run build && php artisan config:cache
+
+Output Directory:
+  public (folder publik Laravel)
+
+Framework:
+  Laravel
+
+Runtime:
+  PHP 8.2
+
+───────────────────────────────────────────────────────────────────────
+SETELAH DEPLOY:
+───────────────────────────────────────────────────────────────────────
+
+✅ Jika berhasil:
+   - URL: https://[project-name].vercel.app
+   - Bisa akses BMI Calculator langsung
+   - Auto-redeploy saat push ke GitHub
+
+❌ Jika gagal:
+   - Check logs di Vercel dashboard
+   - Lihat "Build Logs" tab
+   - Screenshot error dan lapor ke kami
+
+───────────────────────────────────────────────────────────────────────
+TIPS PENTING:
+───────────────────────────────────────────────────────────────────────
+
+1. Setiap kali push ke GitHub → Vercel auto-redeploy
+2. Environment variables bisa diubah di Project Settings
+3. Jangan ubah build command kecuali ada yang error
+4. Jika ada error, cek Build Logs (bukan Runtime Logs)
+
+═══════════════════════════════════════════════════════════════════════
+
+Ready untuk deploy ke Vercel? Mari dimulai!
+
+═══════════════════════════════════════════════════════════════════════

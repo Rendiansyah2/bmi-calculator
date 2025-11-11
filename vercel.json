@@ -1,0 +1,14 @@
+{
+  "buildCommand": "composer install && npm install && npm run build && php artisan config:cache",
+  "outputDirectory": "public",
+  "framework": "laravel",
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "false"
+  },
+  "functions": {
+    "api/[...slug].php": {
+      "runtime": "php:8.2"
+    }
+  }
+}
