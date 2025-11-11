@@ -1,0 +1,144 @@
+═══════════════════════════════════════════════════════════════════════
+  PANDUAN INSTALASI BMI CALCULATOR - UNTUK PEMULA
+═══════════════════════════════════════════════════════════════════════
+
+Halo! Ini adalah panduan langkah demi langkah untuk menjalankan aplikasi 
+BMI Calculator di laptop Anda.
+
+───────────────────────────────────────────────────────────────────────
+YANG HARUS DIDOWNLOAD:
+───────────────────────────────────────────────────────────────────────
+
+1. PHP (Programming Language)
+   → Download dari: https://windows.php.net/download/
+   → Pilih: "Thread Safe" versi terbaru (mis: php-8.2.x-Win32-vs16-x64.zip)
+
+2. Composer (Package Manager untuk PHP)
+   → Download dari: https://getcomposer.org/download/
+   → Pilih: "Composer-Setup.exe" untuk Windows
+
+3. Git (Version Control - Optional tapi disarankan)
+   → Download dari: https://git-scm.com/download/win
+   → Instalasi biasa saja
+
+───────────────────────────────────────────────────────────────────────
+LANGKAH 1: INSTALASI PHP
+───────────────────────────────────────────────────────────────────────
+
+A. Download PHP
+   1. Buka: https://windows.php.net/download/
+   2. Download file ZIP versi "Thread Safe" terbaru
+   3. Extract ke folder: C:\php
+
+B. Setup Environment Variables
+   1. Klik Start Menu → ketik "Environment Variables"
+   2. Buka "Edit the system environment variables"
+   3. Klik "Environment Variables" button
+   4. Klik "New" di System variables
+      - Variable name: PHP_HOME
+      - Variable value: C:\php
+   5. Cari "Path" → Edit → New → ketik: %PHP_HOME%
+   6. Klik OK sampai selesai
+   7. Restart Command Prompt
+
+C. Test PHP
+   1. Buka Command Prompt (Win + R → cmd → Enter)
+   2. Ketik: php -v
+   3. Jika tampil versi PHP, berarti sukses ✓
+
+───────────────────────────────────────────────────────────────────────
+LANGKAH 2: INSTALASI COMPOSER
+───────────────────────────────────────────────────────────────────────
+
+1. Download file: Composer-Setup.exe
+2. Jalankan file installer
+3. Ikuti wizard, tekan Next sampai selesai
+4. Test: Buka Command Prompt → ketik: composer -v
+5. Jika tampil versi, berarti sukses ✓
+
+───────────────────────────────────────────────────────────────────────
+LANGKAH 3: DOWNLOAD PROJECT
+───────────────────────────────────────────────────────────────────────
+
+OPSI A: Menggunakan Git
+   1. Buka Command Prompt
+   2. Ketik: git clone https://github.com/Rendiansyah2/bmi-calculator.git
+   3. Tunggu selesai
+
+OPSI B: Download Manual
+   1. Buka: https://github.com/Rendiansyah2/bmi-calculator
+   2. Klik tombol Code (warna hijau)
+   3. Klik "Download ZIP"
+   4. Extract file ZIP ke folder pilihan
+
+───────────────────────────────────────────────────────────────────────
+LANGKAH 4: INSTALASI DEPENDENCIES
+───────────────────────────────────────────────────────────────────────
+
+1. Buka Command Prompt
+2. Ketik: cd C:\path\ke\folder\bmi-calculator
+   (Contoh: cd C:\Users\YourName\Documents\bmi-calculator)
+3. Ketik: composer install
+4. Tunggu sampai selesai (bisa 2-5 menit)
+
+───────────────────────────────────────────────────────────────────────
+LANGKAH 5: SETUP KONFIGURASI
+───────────────────────────────────────────────────────────────────────
+
+1. Di folder project, cari file ".env.example"
+2. Rename menjadi ".env" (atau copy dan rename)
+3. Buka Command Prompt di folder project
+4. Ketik: php artisan key:generate
+
+───────────────────────────────────────────────────────────────────────
+LANGKAH 6: JALANKAN APLIKASI
+───────────────────────────────────────────────────────────────────────
+
+1. Di Command Prompt (pastikan di folder project):
+   Ketik: php artisan serve
+
+2. Tunggu sampai muncul:
+   "Server running on [http://127.0.0.1:8000]"
+
+3. Buka browser dan buka link: http://127.0.0.1:8000
+
+4. Aplikasi BMI Calculator siap digunakan! 🎉
+
+5. Untuk stop server, tekan: Ctrl + C
+
+───────────────────────────────────────────────────────────────────────
+TROUBLESHOOTING
+───────────────────────────────────────────────────────────────────────
+
+❌ Error: "php command not found"
+   ✓ Pastikan PHP sudah diinstall dan environment variables sudah diset
+   ✓ Restart Command Prompt
+   ✓ Buka Command Prompt baru
+
+❌ Error: "composer command not found"
+   ✓ Pastikan Composer sudah diinstall
+   ✓ Restart Command Prompt
+
+❌ Error: "No application encryption key"
+   ✓ Jalankan: php artisan key:generate
+
+❌ Error: "Port 8000 already in use"
+   ✓ Gunakan port lain: php artisan serve --port=8001
+
+───────────────────────────────────────────────────────────────────────
+RINGKASAN YANG DIBUTUHKAN:
+───────────────────────────────────────────────────────────────────────
+
+✓ PHP 8.2 atau lebih tinggi
+✓ Composer
+✓ Git (optional)
+✓ File project dari GitHub
+
+Total waktu setup: ±15-20 menit untuk pemula
+
+───────────────────────────────────────────────────────────────────────
+
+Untuk bantuan lebih lanjut, buka README.md di folder project atau
+hubungi: Salma Kafa Rikha Lada
+
+═══════════════════════════════════════════════════════════════════════

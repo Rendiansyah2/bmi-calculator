@@ -1,11 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏥 BMI Calculator - Kalkulator Status Gizi
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web untuk menghitung Indeks Massa Tubuh (IMT/BMI) dan menentukan status gizi untuk orang dewasa berdasarkan klasifikasi nasional Indonesia.
+
+**Dibuat oleh:** Salma Kafa Rikha Lada
+
+---
+
+## 📋 Daftar Isi
+1. [Fitur Aplikasi](#fitur-aplikasi)
+2. [Persyaratan Sistem](#persyaratan-sistem)
+3. [Panduan Instalasi Lengkap](#panduan-instalasi-lengkap)
+4. [Cara Menjalankan Aplikasi](#cara-menjalankan-aplikasi)
+5. [Cara Menggunakan Aplikasi](#cara-menggunakan-aplikasi)
+
+---
+
+## ✨ Fitur Aplikasi
+
+- 🧮 **Kalkulator BMI Real-time** - Hitung status gizi secara instant
+- 📊 **Penjelasan Lengkap** - Informasi tentang status gizi dan BMI
+- 📱 **Responsive Design** - Bekerja sempurna di desktop, tablet, dan mobile
+- 🌈 **Tema Kesehatan** - Desain menarik dengan tema kesehatan
+- 💚 **Rekomendasi Kesehatan** - Saran berdasarkan hasil BMI
+
+---
+
+## 🖥️ Persyaratan Sistem
+
+Sebelum instalasi, pastikan komputer Anda memiliki:
+
+1. **PHP 8.2 atau lebih tinggi**
+2. **Composer** (Package Manager PHP)
+3. **Git** (untuk mengunduh project dari GitHub)
+
+---
+
+## 📥 Panduan Instalasi Lengkap
+
+### Langkah 1: Download dan Install PHP
+
+#### Untuk Windows:
+1. Buka website: **https://windows.php.net/download/**
+2. Download versi **Thread Safe** (contoh: php-8.2.x-Win32-vs16-x64.zip)
+3. Extract file ZIP ke folder: `C:\php` (atau folder pilihan Anda)
+4. Rename file `php.ini-production` menjadi `php.ini`
+5. Setup environment variable (agar PHP bisa diakses dari Command Prompt):
+   - Klik **Start Menu** → Cari "Environment Variables"
+   - Klik "Edit the system environment variables"
+   - Klik tombol **Environment Variables**
+   - Di bagian "System variables" klik **New**
+   - Variable name: `PHP_HOME`
+   - Variable value: `C:\php` (sesuai folder Anda)
+   - Klik OK
+   - Cari variable **Path** → Edit → New → tambahkan `%PHP_HOME%`
+   - Klik OK sampai selesai
+6. Buka Command Prompt / PowerShell → ketik: `php -v` (jika tampil versi, instalasi berhasil)
+
+**Alternatif Mudah:** Download **PHP portable** dari https://www.apachelounge.com/
+
+---
+
+### Langkah 2: Download dan Install Composer
+
+1. Buka website: **https://getcomposer.org/download/**
+2. Download **Composer-Setup.exe** (untuk Windows)
+3. Jalankan file installer
+4. Ikuti wizard instalasi (tekan Next sampai selesai)
+5. Pastikan path PHP terdeteksi otomatis
+6. Buka Command Prompt / PowerShell → ketik: `composer -v` (jika tampil versi, instalasi berhasil)
+
+---
+
+### Langkah 3: Download Git (Opsional tapi Direkomendasikan)
+
+1. Buka website: **https://git-scm.com/download/win**
+2. Download installer untuk Windows
+3. Jalankan file installer dengan pengaturan default
+4. Selesai
+
+---
+
+### Langkah 4: Unduh Project dari GitHub
+
+#### Opsi A: Menggunakan Git (Rekomendasi)
+```bash
+git clone https://github.com/Rendiansyah2/bmi-calculator.git
+cd bmi-calculator
+```
+
+#### Opsi B: Download Manual
+1. Buka: **https://github.com/Rendiansyah2/bmi-calculator**
+2. Klik tombol **Code** (hijau) → **Download ZIP**
+3. Extract file ZIP ke folder pilihan Anda
+4. Buka Command Prompt / PowerShell di folder tersebut
+
+---
+
+### Langkah 5: Install Dependencies
+
+Buka Command Prompt / PowerShell di folder project dan jalankan:
+
+```bash
+composer install
+```
+
+**Catatan:** Proses ini akan mendownload semua library yang dibutuhkan. Tunggu sampai selesai (bisa 2-5 menit).
+
+---
+
+### Langkah 6: Setup File Konfigurasi
+
+1. Copy file `.env.example` menjadi `.env`:
+   - **Untuk Windows PowerShell:**
+     ```bash
+     Copy-Item .env.example .env
+     ```
+   - **Atau manual:** Rename file `.env.example` menjadi `.env`
+
+2. Generate application key:
+   ```bash
+   php artisan key:generate
+   ```
+
+---
+
+## 🚀 Cara Menjalankan Aplikasi
+
+Setelah semua instalasi selesai, jalankan server Laravel dengan perintah:
+
+```bash
+php artisan serve
+```
+
+**Output yang muncul:**
+```
+INFO  Server running on [http://127.0.0.1:8000].
+Press Ctrl+C to stop the server
+```
+
+Kemudian buka browser Anda dan akses: **http://127.0.0.1:8000**
+
+---
+
+## 📖 Cara Menggunakan Aplikasi
+
+### Menghitung BMI:
+
+1. **Scroll ke halaman utama** - Baca penjelasan tentang status gizi
+2. **Masukkan Data:**
+   - Berat Badan (dalam kg) - Contoh: 65
+   - Tinggi Badan (dalam cm) - Contoh: 170
+3. **Klik tombol "Hitung IMT"**
+4. **Lihat Hasil:**
+   - Nilai BMI Anda
+   - Kategori Status Gizi
+   - Rekomendasi kesehatan khusus
+
+### Klasifikasi Status Gizi (Nasional Indonesia):
+
+| Kategori | Range IMT | Warna |
+|----------|-----------|-------|
+| Kurus (Tingkat Berat) | < 17,0 | Biru |
+| Kurus (Tingkat Ringan) | 17,0 - 18,4 | Orange |
+| Normal | 18,5 - 25,0 | Hijau |
+| Gemuk (Tingkat Ringan) | 25,1 - 27,0 | Kuning |
+| Gemuk (Tingkat Berat) | > 27,0 | Merah |
+
+---
+
+## 🛠️ Troubleshooting
+
+### Error: "php command not found"
+- Pastikan PHP sudah diinstall dengan benar
+- Restart Command Prompt setelah setup Environment Variables
+
+### Error: "composer command not found"
+- Pastikan Composer sudah diinstall
+- Restart Command Prompt setelah instalasi
+
+### Error: "No application encryption key has been defined"
+- Jalankan: `php artisan key:generate`
+
+### Port 8000 sudah terpakai
+- Gunakan port lain: `php artisan serve --port=8001`
+
+---
+
+## 📚 Resource Tambahan
+
+- **Laravel Official:** https://laravel.com
+- **PHP Official:** https://www.php.net
+- **Composer:** https://getcomposer.org
+
+---
+
+## 📄 Lisensi
+
+Project ini menggunakan lisensi MIT.
+
+---
+
+**Pertanyaan atau masalah?** Hubungi Salma Kafa Rikha Lada atau buka Issue di GitHub.
+
 
 ## About Laravel
 
