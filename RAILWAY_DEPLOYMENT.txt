@@ -1,0 +1,107 @@
+═══════════════════════════════════════════════════════════════════════
+  PANDUAN DEPLOY KE RAILWAY
+═══════════════════════════════════════════════════════════════════════
+
+Aplikasi BMI Calculator sudah di-deploy ke Railway!
+URL: https://bmi-calculator-production.up.railway.app
+
+───────────────────────────────────────────────────────────────────────
+JIKA TERJADI ERROR 500:
+───────────────────────────────────────────────────────────────────────
+
+1. CEK LOG DI RAILWAY:
+   - Buka dashboard Railway
+   - Pilih project "bmi-calculator"
+   - Klik tab "Logs"
+   - Lihat error message yang muncul
+
+2. MASALAH UMUM & SOLUSI:
+
+   ❌ Error: "No application encryption key has been defined"
+      ✓ Railway sudah menjalankan "php artisan key:generate" otomatis
+      ✓ Jika masih error, regenerate key di local:
+        - php artisan key:generate
+        - Push ke GitHub
+
+   ❌ Error: "File permission denied"
+      ✓ Buka railway.json configuration
+      ✓ Pastikan storage directory writable
+
+   ❌ Error: "Cannot find module vendor"
+      ✓ Railway otomatis jalankan "composer install"
+      ✓ Tunggu 3-5 menit setelah push
+
+   ❌ Error: ".env not found"
+      ✓ Railway otomatis generate .env
+      ✓ Jika error, set environment variables di Railway dashboard
+
+───────────────────────────────────────────────────────────────────────
+STEP-BY-STEP SETUP RAILWAY:
+───────────────────────────────────────────────────────────────────────
+
+1. Buat Account Railway (https://railway.app)
+
+2. Create New Project → Deploy from GitHub
+
+3. Select Repository: bmi-calculator
+
+4. Railway akan otomatis:
+   - Detect it's a Laravel project
+   - Run: composer install
+   - Run: php artisan key:generate
+   - Setup web server
+
+5. Configure Variables (kalau diperlukan):
+   - Buka Project Settings
+   - Klik "Environment"
+   - Add variables jika diperlukan
+
+6. Deploy!
+   - Railway akan automatic deploy
+   - Tunggu 3-5 menit
+
+───────────────────────────────────────────────────────────────────────
+CEK STATUS DEPLOY:
+───────────────────────────────────────────────────────────────────────
+
+1. Di Railway Dashboard:
+   - Lihat "Deployments" tab
+   - Status harus "Success" (bukan "Failed")
+   - Lihat "Logs" untuk error details
+
+2. Build Command:
+   - Railway akan jalankan: composer install
+
+3. Start Command:
+   - Railway akan jalankan server otomatis
+
+───────────────────────────────────────────────────────────────────────
+JIKA TETAP ERROR:
+───────────────────────────────────────────────────────────────────────
+
+1. Delete deployment lama
+2. Trigger new deployment:
+   - Push perubahan ke GitHub
+   - Railway akan auto-deploy
+
+3. Atau manual redeploy:
+   - Railway Dashboard → Deployments
+   - Klik "Redeploy" button
+
+4. Tunggu proses selesai (lihat Logs)
+
+───────────────────────────────────────────────────────────────────────
+QUICK CHECKLIST:
+───────────────────────────────────────────────────────────────────────
+
+✓ Repository sudah connected ke Railway
+✓ Procfile sudah ada di root folder
+✓ composer.lock sudah di-push
+✓ GitHub branch "main" sudah up-to-date
+✓ Cek Logs untuk error details
+
+───────────────────────────────────────────────────────────────────────
+
+Butuh bantuan? Lihat Railway docs: https://railway.app/docs
+
+═══════════════════════════════════════════════════════════════════════
