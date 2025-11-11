@@ -1,0 +1,120 @@
+═══════════════════════════════════════════════════════════════════════
+  FIX RAILWAY - SOLUSI ERROR "No application encryption key"
+═══════════════════════════════════════════════════════════════════════
+
+ERROR YANG MUNCUL:
+"No application encryption key has been specified"
+
+PENYEBAB:
+Railway tidak auto-generate APP_KEY untuk Laravel
+
+SOLUSI:
+Set APP_KEY manual di Railway Environment Variables
+
+───────────────────────────────────────────────────────────────────────
+STEP-BY-STEP FIX RAILWAY:
+───────────────────────────────────────────────────────────────────────
+
+📍 STEP 1: Buka Railway Dashboard
+   1. Buka: https://railway.app/dashboard
+   2. Login
+   3. Pilih project: "bmi-calculator"
+
+📍 STEP 2: Set Environment Variables (PENTING!)
+   1. Klik tab "Variables" atau "Environment"
+   2. Tambahkan environment variables berikut:
+
+   ┌──────────────────────────────────────────────────────────────┐
+   │ Variable Name  │ Value                                       │
+   ├──────────────────────────────────────────────────────────────┤
+   │ APP_KEY        │ base64:Rf7nSqTwsoipE2sWgtL3xWHklNxYVzqsNCX4PoDgjhs= │
+   │ APP_NAME       │ BMI Calculator                              │
+   │ APP_ENV        │ production                                  │
+   │ APP_DEBUG      │ false                                       │
+   │ LOG_CHANNEL    │ stack                                       │
+   │ LOG_LEVEL      │ error                                       │
+   │ DB_CONNECTION  │ sqlite                                      │
+   │ SESSION_DRIVER │ file                                        │
+   │ CACHE_STORE    │ file                                        │
+   └──────────────────────────────────────────────────────────────┘
+
+   ⚠️ PENTING: Copy APP_KEY dengan TEPAT (termasuk "base64:")
+   
+   3. Klik "Add" untuk setiap variable
+   4. Klik "Save" atau "Deploy"
+
+📍 STEP 3: HAPUS Start Command (Biarkan kosong/default)
+   1. Klik tab "Settings"
+   2. Cari field "Start Command" atau "Custom Start Command"
+   3. KOSONGKAN field tersebut (hapus isinya)
+   4. Railway akan auto-detect Laravel dan jalankan dengan benar
+
+📍 STEP 4: Trigger Redeploy
+   1. Klik tab "Deployments"
+   2. Klik "Redeploy" atau "Deploy"
+   3. Tunggu 3-5 menit
+   4. Lihat Logs untuk memastikan tidak ada error
+
+📍 STEP 5: Cek Status Deployment
+   1. Status harus: ✅ "Running" atau "Active" (hijau)
+   2. Buka URL Railway: https://[project-name].up.railway.app
+   3. Harusnya BMI Calculator sudah jalan!
+
+───────────────────────────────────────────────────────────────────────
+SCREENSHOT CARA SET ENVIRONMENT VARIABLES:
+───────────────────────────────────────────────────────────────────────
+
+1. Railway Dashboard → Project "bmi-calculator"
+2. Klik tab "Variables"
+3. Klik "+ New Variable"
+4. Name: APP_KEY
+5. Value: base64:Rf7nSqTwsoipE2sWgtL3xWHklNxYVzqsNCX4PoDgjhs=
+6. Klik "Add"
+7. Ulangi untuk variable lainnya
+
+───────────────────────────────────────────────────────────────────────
+JIKA MASIH ERROR:
+───────────────────────────────────────────────────────────────────────
+
+❌ Error: "Class not found" / "vendor not found"
+   ✓ Railway auto-run "composer install"
+   ✓ Tunggu build selesai (3-5 menit)
+   ✓ Cek Build Logs untuk error
+
+❌ Error: "Permission denied" (storage)
+   ✓ Railway auto-set permissions
+   ✓ Jika masih error, buat "railway.toml" config
+
+❌ Error: "404 Not Found"
+   ✓ Cek apakah deployment sudah selesai
+   ✓ Cek URL benar
+   ✓ Cek routes/web.php ada
+
+───────────────────────────────────────────────────────────────────────
+CHECKLIST SEBELUM DEPLOY:
+───────────────────────────────────────────────────────────────────────
+
+✓ APP_KEY sudah di-set di Railway Variables
+✓ APP_ENV = production
+✓ APP_DEBUG = false
+✓ Start Command dikosongkan (auto-detect)
+✓ Repository GitHub sudah connected
+✓ Branch "main" sudah up-to-date
+
+───────────────────────────────────────────────────────────────────────
+TIPS:
+───────────────────────────────────────────────────────────────────────
+
+1. JANGAN ubah APP_KEY setelah deploy pertama kali
+2. Railway auto-detect Laravel project
+3. Setiap push ke GitHub → auto-redeploy
+4. Lihat "Logs" untuk debug error
+
+═══════════════════════════════════════════════════════════════════════
+
+SIAP? Mari set APP_KEY di Railway dan deploy!
+
+APP_KEY ANDA (COPY INI):
+base64:Rf7nSqTwsoipE2sWgtL3xWHklNxYVzqsNCX4PoDgjhs=
+
+═══════════════════════════════════════════════════════════════════════
