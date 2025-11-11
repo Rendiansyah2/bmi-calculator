@@ -1,0 +1,62 @@
+═══════════════════════════════════════════════════════════════════════
+  FIX ERROR 500 DI RAILWAY - LANGKAH PERBAIKAN
+═══════════════════════════════════════════════════════════════════════
+
+MASALAH:
+Error: "/bin/bash: line 1: vendor/bin/heroku-php-apache2: No such file or directory"
+
+PENYEBAB:
+Railway tidak auto-install heroku-buildpack. Kami perlu set start command yang benar.
+
+───────────────────────────────────────────────────────────────────────
+SOLUSI CEPAT - IKUTI 3 STEP INI:
+───────────────────────────────────────────────────────────────────────
+
+STEP 1: Buka Railway Dashboard
+   1. Buka: https://railway.app
+   2. Login dengan akun Anda
+   3. Pilih project: "bmi-calculator"
+
+STEP 2: Set Environment & Start Command
+   1. Di project, klik tab "Variables"
+   2. Tambahkan/pastikan ada:
+      - APP_DEBUG = false
+      - APP_ENV = production
+      - PORT = 8080 (atau kosongkan, Railway auto-set)
+
+   3. Klik tab "Settings"
+   4. Cari "Start Command" atau "Run Command"
+   5. Ganti dengan: php artisan serve --host=0.0.0.0 --port=8080
+   6. Save/Apply
+
+STEP 3: Redeploy
+   1. Klik tab "Deployments"
+   2. Klik tombol "Redeploy" (atau "Trigger Deployment")
+   3. Tunggu 3-5 menit sampai "Running" status
+
+───────────────────────────────────────────────────────────────────────
+ALTERNATIVE - JIKA MASIH ERROR:
+───────────────────────────────────────────────────────────────────────
+
+Disconnect & Reconnect GitHub:
+
+1. Railway Dashboard → Settings
+2. Cari "GitHub" atau "Source Control"
+3. Klik "Disconnect"
+4. Buka GitHub: https://github.com/settings/applications
+5. Revoke Railway access
+6. Reconnect GitHub ke Railway
+7. Re-select repository
+8. Railway akan rebuild dari scratch
+
+───────────────────────────────────────────────────────────────────────
+QUICK CHECKLIST:
+───────────────────────────────────────────────────────────────────────
+
+✓ Start Command sudah di-set di Railway settings
+✓ APP_ENV = production
+✓ APP_DEBUG = false
+✓ PORT environment variable ada atau kosong (auto-detect)
+✓ Deployment status berwarna hijau (Running)
+
+═══════════════════════════════════════════════════════════════════════
