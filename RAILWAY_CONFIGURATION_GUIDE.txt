@@ -1,0 +1,128 @@
+═══════════════════════════════════════════════════════════════════════
+  PANDUAN LENGKAP FIX ERROR 500 - RAILWAY CONFIGURATION
+═══════════════════════════════════════════════════════════════════════
+
+✅ Repository sudah di-update
+✅ Procfile sudah dihapus
+✅ Sekarang set configuration di Railway Dashboard
+
+───────────────────────────────────────────────────────────────────────
+STEP-BY-STEP CONFIGURATION DI RAILWAY:
+───────────────────────────────────────────────────────────────────────
+
+📍 STEP 1: Buka Railway Dashboard
+   1. Buka browser: https://railway.app/dashboard
+   2. Login dengan akun GitHub Anda
+   3. Pilih project: "bmi-calculator"
+
+📍 STEP 2: Set Environment Variables
+   1. Di project, cari menu "Variables" atau "Environment"
+   2. Klik "+ Add" atau "New Variable"
+   3. Tambahkan variabel berikut:
+
+      ┌─────────────────────────────────────┐
+      │ Key          │ Value               │
+      ├─────────────────────────────────────┤
+      │ APP_NAME     │ BMI Calculator      │
+      │ APP_ENV      │ production          │
+      │ APP_DEBUG    │ false               │
+      │ APP_URL      │ (akan auto-detect)  │
+      └─────────────────────────────────────┘
+
+   4. Klik "Save" atau "Deploy"
+
+📍 STEP 3: Set Build & Deploy Command
+   
+   METHOD A: Jika Railway punya field "Build Command":
+   ────────────────────────────────────────────────────
+   Build Command: composer install
+   Start Command: php artisan serve --host=0.0.0.0 --port=$PORT
+
+   METHOD B: Jika ada "Run" atau "Exec" field:
+   ────────────────────────────────────────────────────
+   Isi dengan: php artisan serve --host=0.0.0.0 --port=$PORT
+
+   METHOD C: Jika tidak ketemu field di atas:
+   ────────────────────────────────────────────────────
+   1. Klik tombol "..." (More Options)
+   2. Cari "Build" atau "Deploy" settings
+   3. Isi start command: php artisan serve --host=0.0.0.0 --port=$PORT
+
+📍 STEP 4: Trigger Redeploy
+   1. Klik tab "Deployments"
+   2. Lihat deployment terakhir
+   3. Klik tombol "Redeploy" (atau tombol ▶️ jika ada)
+   4. Tunggu 3-5 menit
+   5. Status harus berubah jadi ✅ "Running" (berwarna hijau)
+
+📍 STEP 5: Cek Logs untuk Verifikasi
+   1. Klik tab "Logs"
+   2. Lihat output dari deployment
+   3. Cari text seperti:
+      - "Server running on" = ✅ SUKSES
+      - "error" / "failed" = ❌ GAGAL (screenshot dan kirim ke saya)
+
+───────────────────────────────────────────────────────────────────────
+JIKA MASIH GAGAL - COBA INI:
+───────────────────────────────────────────────────────────────────────
+
+❌ Masalah: Masih ada error heroku-php-apache2
+   ✅ Solusi:
+      1. Buka Project Settings → GitHub Integration
+      2. Klik "Disconnect"
+      3. Reconnect lagi (auto-rebuid)
+      4. Tunggu deploy ulang
+
+❌ Masalah: Port tidak ditemukan
+   ✅ Solusi:
+      Ganti command dengan:
+      php artisan serve --host=0.0.0.0 --port=8080
+      (atau port yang tersedia di Railway)
+
+❌ Masalah: Memory/Resource error
+   ✅ Solusi:
+      1. Railway → Project Settings → Resources
+      2. Upgrade RAM/CPU (jika paket allow)
+
+───────────────────────────────────────────────────────────────────────
+SCREENSHOT YANG PERLU DIAMBIL:
+───────────────────────────────────────────────────────────────────────
+
+1. Variables page (screenshot semua env variables)
+2. Build/Deploy settings (screenshot command yang diset)
+3. Logs page (screenshot hasil deployment)
+
+Kirim screenshot-nya jika masih error!
+
+───────────────────────────────────────────────────────────────────────
+ALTERNATIF: GUNAKAN VERCEL ATAU NETLIFY
+───────────────────────────────────────────────────────────────────────
+
+Jika Railway tetap tidak jalan, coba alternatif lain:
+
+1. VERCEL (https://vercel.com)
+   - Deploy Laravel lebih mudah
+   - Free tier cukup untuk demo
+
+2. RENDER (https://render.com)
+   - Support Laravel native
+   - Dokumentasi lengkap
+
+3. HEROKU (https://heroku.com)
+   - Bisa pakai Procfile
+   - Ada free tier (meski limited)
+
+───────────────────────────────────────────────────────────────────────
+TIPS PENTING:
+───────────────────────────────────────────────────────────────────────
+
+✓ Setiap kali update code, push ke GitHub → Railway auto-redeploy
+✓ Jangan ubah PORT manual di environment (Railway auto-set)
+✓ Jika ada perubahan di .env.example, manual update di Railway Variables
+✓ Check Logs setiap kali ada error
+
+═══════════════════════════════════════════════════════════════════════
+
+READY? Mari kita configure Railway sesuai STEP-BY-STEP di atas!
+
+═══════════════════════════════════════════════════════════════════════
